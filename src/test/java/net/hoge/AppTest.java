@@ -1,9 +1,11 @@
 package net.hoge;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 /**
  * Unit test for simple App.
  */
@@ -15,6 +17,6 @@ public class AppTest
     @Test
     public void shouldAnswerWithTrue()
     {
-        assertTrue( true );
+        assertEquals(new App().home(), "Hello World!");
     }
 }
