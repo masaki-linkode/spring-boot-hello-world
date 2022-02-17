@@ -4,11 +4,18 @@
   <property file="./log_aws_s3.properties" />
 
   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+      <fieldNames>
+        <logger>[ignore]</logger>
+        <thread>[ignore]</thread>
+        <version>[ignore]</version>
+        <levelValue>[ignore]</levelValue>
+      </fieldNames>
+    </encoder>
   </appender>
 
-  <root level="DEBUG">
-    <appender-ref ref="CONSOLE"/>
-  </root>
+  <logger name="net.hoge.App" level="DEBUG">
+      <appender-ref ref="CONSOLE"/>
+  </logger>
 
 </configuration>
