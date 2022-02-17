@@ -1,5 +1,9 @@
 
 
+## 準備
+
+log_aws_s3.properties.sampleを元にlog_aws_s3.propertiesを作成する。
+
 ## 実行
 
 ```

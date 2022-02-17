@@ -50,7 +50,20 @@
       <artifactId>logstash-logback-encoder</artifactId>
       <version>7.0.1</version>
     </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-s3-rolling-policy</artifactId>
+      <version>0.0.3</version>
+    </dependency>
   </dependencies>
+
+  <repositories>
+		<repository>
+			<id>logback-s3-rolling-policy_id</id>
+      <name>logback-s3-rolling-policy_name</name>
+			<url>https://raw.githubusercontent.com/komuro-hiraku/logback-s3-rolling-policy/mvn-repo/</url>
+		</repository>
+  </repositories>
 
   <build>
   

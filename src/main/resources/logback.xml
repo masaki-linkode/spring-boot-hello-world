@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
-    </appender>
 
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-        <!-- <appender-ref ref="FILE" /> -->
-    </root>
+  <property file="./log_aws_s3.properties" />
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/myapp.log</file>
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    <rollingPolicy class="ch.qos.logback.core.rolling.S3FixedWindowRollingPolicy">
+      <fileNamePattern>logs/myapp.%i.log.gz</fileNamePattern>
+      <awsAccessKey>${AWS_ACCESS_KEY_ID}</awsAccessKey>
+      <awsSecretKey>${AWS_SECRET_ACCESS_KEY}</awsSecretKey>
+      <s3BucketName>${LOG_S3_BUCKETNAME}</s3BucketName>
+      <s3FolderName>${LOG_S3_FOLDERNAME}</s3FolderName>
+      <rolloverOnExit>true</rolloverOnExit>
+      <shutdownHookType>SERVLET_CONTEXT</shutdownHookType>
+      <prefixTimestamp>true</prefixTimestamp>
+      <prefixIdentifier>true</prefixIdentifier>
+    </rollingPolicy>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>300KB</maxFileSize>
+    </triggeringPolicy>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="FILE" />
+  </root>
 
 </configuration>

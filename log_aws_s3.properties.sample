@@ -1,0 +1,4 @@
+AWS_ACCESS_KEY_ID=HOGEHOGE
+AWS_SECRET_ACCESS_KEY=fugafuga
+LOG_S3_BUCKETNAME=kanrishagroup
+LOG_S3_FOLDERNAME=survey/otameshi/%d{yyyy/MM/dd}

@@ -1,1 +1,3 @@
 target
+log_aws_s3.properties
+logs/
